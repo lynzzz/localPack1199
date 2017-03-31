@@ -1,0 +1,26 @@
+.form-signup {
+	font-size: 16px;
+	padding-top: 30px;
+}
+.row > div {
+	margin-bottom: 10px;
+}
+.btn-primary {
+	margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+	.form-signup {
+		width: 90%;
+		margin: auto;
+		font-size: 16px;
+	}
+}
+
+@media (min-width: 767px) {
+	.form-signup {
+		width: 50%;
+		margin: auto;
+		font-size: 16px;
+	}
+}

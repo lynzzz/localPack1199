@@ -1,0 +1,313 @@
+{
+  "eventSummary" : {
+    "E_1" : {
+      "icon" : "side-single-retreat-zipline.png",
+      "maxParticipantId" : "2",
+      "numberOfParticipants" : "2",
+      "terminateDate" : "04/24/2017",
+      "title" : "Spring Family Overnight"
+    }
+  },
+  "events" : {
+    "E_1" : {
+      "comments" : {
+        "CM_001" : {
+          "content" : "This is the first comment",
+          "date" : "01/01/2017",
+          "reply" : {
+            "RP_001" : {
+              "content" : "This is the first reply",
+              "date" : "01/01/2017",
+              "user" : "dgFhtLlLELRFr7X1uqxFHDx8yXV2"
+            },
+            "RP_002" : {
+              "content" : "This is the second reply",
+              "date" : "01/01/2017",
+              "user" : "dgFhtLlLELRFr7X1uqxFHDx8yXV2"
+            }
+          },
+          "user" : "dgFhtLlLELRFr7X1uqxFHDx8yXV2"
+        },
+        "CM_002" : {
+          "content" : "This is the second comment",
+          "date" : "01/01/2017",
+          "reply" : {
+            "RP_001" : {
+              "content" : "This is the first reply",
+              "date" : "01/01/2017",
+              "user" : "dgFhtLlLELRFr7X1uqxFHDx8yXV2"
+            },
+            "RP_002" : {
+              "content" : "This is the second reply",
+              "date" : "01/01/2017",
+              "user" : "dgFhtLlLELRFr7X1uqxFHDx8yXV2"
+            }
+          },
+          "user" : "dgFhtLlLELRFr7X1uqxFHDx8yXV2"
+        }
+      },
+      "infor" : {
+        "coOrganizers" : {
+          "U_2" : true
+        },
+        "createDate" : "01/20/2017",
+        "description" : "<div><h2>Activities to include:</h2><p>Fishing, Nature Hike, Sports and Games, Playground, Geocaching, Giant Slides, Camp Fire, STEM Lesson, Challenge course, Opportunities for awards, and much more!</p></div>",
+        "ends" : {
+          "date" : "04/30/2017",
+          "time" : "11:00am"
+        },
+        "images" : {
+          "IMG_1" : "header-mountainside-sign.jpg",
+          "IMG_2" : "E_1/img_2.png"
+        },
+        "location" : {
+          "address" : "Mountainside Retreat Center",
+          "address2" : "2914 Roderick Road",
+          "city" : "Urbana",
+          "state" : "MD",
+          "zip" : "21704"
+        },
+        "modifyDate" : "01/20/2017",
+        "organizer" : "U_1",
+        "starts" : {
+          "date" : "04/29/2017",
+          "time" : "10:00am"
+        },
+        "terminateDate" : "03/15/2017",
+        "title" : "Cub Scout Pack1199 Spring Family Overnight"
+      },
+      "options" : {
+        "Den" : {
+          "Den_1" : "Webelos Den AOL 1",
+          "Den_10" : "Wolf Den 10",
+          "Den_11" : "Webelos Den AOL 11",
+          "Den_2" : "Tiger Den 2",
+          "Den_3" : "Tiger Den 3",
+          "Den_4" : "Webelos Den AOL 4",
+          "Den_5" : "Webelos Den 5",
+          "Den_6" : "Bear Den 6",
+          "Den_7" : "Wolf Den 7",
+          "Den_8" : "Webelos Den 8"
+        },
+        "age" : {
+          "Adult" : "Adult (14 & older)",
+          "Toddler" : "Toddler (2 and young)",
+          "Youth" : "Youth (3 - 13)"
+        }
+      },
+      "participants" : {
+        "P_1" : {
+          "age" : "Adult",
+          "den" : "Webelos AOL 1",
+          "firstName" : "Sam",
+          "healthForm" : false,
+          "lastName" : "Don",
+          "paid" : "6ca2d3e1-383e-55e5-4bba-bb2f168b0630",
+          "tasks" : {
+            "TK_1" : true,
+            "TK_2" : true
+          },
+          "user" : "dgFhtLlLELRFr7X1uqxFHDx8yXV2",
+          "yurt" : false
+        },
+        "P_2" : {
+          "age" : "Youth",
+          "den" : "Webelos AOL 1",
+          "firstName" : "Matt",
+          "healthForm" : false,
+          "lastName" : "Don",
+          "paid" : "6ca2d3e1-383e-55e5-4bba-bb2f168b0630",
+          "user" : "dgFhtLlLELRFr7X1uqxFHDx8yXV2",
+          "yurt" : false
+        },
+        "dgFhtLlLELRFr7X1uqxFHDx8yXV2" : {
+          "P_1" : {
+            "Age" : [ "Adult" ],
+            "Den" : [ "Tiger 0" ],
+            "FirstName" : [ "" ],
+            "LastName" : [ "" ],
+            "healthForm" : false,
+            "paid" : false,
+            "tasks" : {
+              "TK_1" : true,
+              "TK_2" : true
+            }
+          },
+          "P_2" : {
+            "Age" : [ "Adult" ],
+            "Den" : [ "Tiger 0" ],
+            "FirstName" : [ "" ],
+            "LastName" : [ "" ],
+            "healthForm" : false,
+            "paid" : false,
+            "tasks" : {
+              "TK_1" : true,
+              "TK_2" : true
+            }
+          },
+          "P_3" : {
+            "Age" : [ "Adult" ],
+            "Den" : [ "Tiger 0" ],
+            "FirstName" : [ "" ],
+            "LastName" : [ "" ],
+            "healthForm" : false,
+            "paid" : false,
+            "tasks" : {
+              "TK_1" : true,
+              "TK_2" : true
+            }
+          },
+          "P_4" : {
+            "Age" : [ "Adult" ],
+            "Den" : [ "Tiger 0" ],
+            "FirstName" : [ "" ],
+            "LastName" : [ "" ],
+            "healthForm" : false,
+            "paid" : false,
+            "tasks" : {
+              "TK_1" : true,
+              "TK_2" : true
+            }
+          }
+        },
+        "qTtcV98tJlWwElvpJ296EO0x0dj1" : {
+          "P_1" : {
+            "Age" : [ "Adult" ],
+            "Den" : [ "Tiger 0" ],
+            "FirstName" : [ "" ],
+            "LastName" : [ "" ],
+            "healthForm" : false,
+            "paid" : false,
+            "tasks" : {
+              "TK_1" : true,
+              "TK_2" : true
+            }
+          },
+          "P_2" : {
+            "Age" : [ "Adult" ],
+            "Den" : [ "Tiger 0" ],
+            "FirstName" : [ "" ],
+            "LastName" : [ "" ],
+            "healthForm" : false,
+            "paid" : false,
+            "tasks" : {
+              "TK_1" : true,
+              "TK_2" : true
+            }
+          },
+          "P_3" : {
+            "Age" : [ "Adult" ],
+            "Den" : [ "Tiger 0" ],
+            "FirstName" : [ "" ],
+            "LastName" : [ "" ],
+            "healthForm" : false,
+            "paid" : false,
+            "tasks" : {
+              "TK_1" : true,
+              "TK_2" : true
+            }
+          },
+          "P_4" : {
+            "Age" : [ "Adult" ],
+            "Den" : [ "Tiger 0" ],
+            "FirstName" : [ "" ],
+            "LastName" : [ "" ],
+            "healthForm" : false,
+            "paid" : false,
+            "tasks" : {
+              "TK_1" : true,
+              "TK_2" : true
+            }
+          }
+        }
+      },
+      "payments" : {
+        "6ca2d3e1-383e-55e5-4bba-bb2f168b0630" : {
+          "participants" : {
+            "P_1" : true,
+            "P_2" : true
+          },
+          "amount" : "100",
+          "created_at" : "2017-02-19T13:38:15Z",
+          "note" : "Test performed by Kevin Qi",
+          "location_id" : "CBASEDNtqqZoDQhYAOS0zIeX5w4gAQ",
+          "id" : "51c8e583-2056-507d-4a2d-71b02b1576f8",
+          "card_brand" : "AMERICAN_EXPRESS",
+          "card_last_4" : "1017",
+          "zip" : "20841"
+        }
+      },
+      "tasks" : {
+        "TK_1" : {
+          "description" : "Need 4 people to prepare lunch",
+          "require" : 4,
+          "title" : "Lunch"
+        },
+        "TK_10" : {
+          "description" : "Need 4 people to  stay to clean up on Sunday",
+          "require" : 4,
+          "title" : "Clean"
+        },
+        "TK_11" : {
+          "description" : "I am not available to help",
+          "require" : 0,
+          "title" : "Not available"
+        },
+        "TK_2" : {
+          "description" : "Need 4 people to prepare dinner",
+          "require" : 4,
+          "title" : "Dinner"
+        },
+        "TK_3" : {
+          "description" : "Need 4 people to prepare campfire snack",
+          "require" : 4,
+          "title" : "Campfire Snack"
+        },
+        "TK_4" : {
+          "description" : "Need 4 people to prepare breakfast",
+          "require" : 4,
+          "title" : "Breakfast"
+        },
+        "TK_5" : {
+          "description" : "Need 4 people to prepare dinner",
+          "require" : 4,
+          "title" : "Dinner"
+        },
+        "TK_6" : {
+          "description" : "Need 2 people to guard the campfire",
+          "require" : 2,
+          "title" : "Campfire Guardians"
+        },
+        "TK_7" : {
+          "description" : "Need one to guard the lunch fire",
+          "require" : 1,
+          "title" : "Lunch Fire guardian"
+        },
+        "TK_8" : {
+          "description" : "Need 4 people in shifts throughout the day to roam and help with various stations",
+          "require" : 4,
+          "title" : "Roam"
+        },
+        "TK_9" : {
+          "description" : "Need 4 people to help with craft throughout the day (1 at a time)",
+          "require" : 4,
+          "title" : "Craft"
+        }
+      }
+    }
+  },
+  "users" : {
+    "dgFhtLlLELRFr7X1uqxFHDx8yXV2" : {
+      "email" : "react@example.com",
+      "firstName" : "React",
+      "lastName" : "Js",
+      "phone" : ""
+    },
+    "qTtcV98tJlWwElvpJ296EO0x0dj1" : {
+      "email" : "react@example.com",
+      "firstName" : "React",
+      "lastName" : "Js",
+      "phone" : ""
+    }
+  }
+}

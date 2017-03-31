@@ -1,0 +1,32 @@
+.btn-default {
+	margin: 10px;
+}
+.author-date {
+	font-style: italic;
+	float: right;
+	padding-bottom: 5px;
+}
+.btn-comment {
+	/*float: right;*/
+}
+.text-comment {
+	word-wrap: break-word;
+	font-size: 18px;
+	font-weight: bold;
+}
+.text-comment-reply {
+	word-wrap: break-word;
+	font-size: 18px;
+}
+li.comment-list {
+	border-style: hide;
+	border-color: #ccc;
+	border-radius: 4px;
+	list-style: none;
+	padding-bottom: 30px;
+	padding-left: 10px;
+}
+ul.comment-list {
+	padding-left: 0px;
+	padding-bottom: 5px;
+}

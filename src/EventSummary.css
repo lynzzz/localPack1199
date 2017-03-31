@@ -1,0 +1,39 @@
+.event-summary {
+	border-style: solid;
+	border-color: #483D8B;
+	border-width: 1px;
+	display: inline-block;
+	width: 220px;
+	height: 320px;
+	margin: 10px;
+	background: #3F51B5; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#3F51B5, #5C6BC0); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#3F51B5, #5C6BC0); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#3F51B5, #5C6BC0); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#3F51B5, #5C6BC0); /* Standard syntax */
+    text-align: center;
+}
+.event-summary p, .event-summary strong {
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 14px;
+	text-align: center;
+	color: #FFF8DC;	
+	margin: auto;
+}
+.event-summary p:hover {
+	text-decoration: none;
+}
+.event-summary img {
+	padding-top: 10px;
+	padding-left: 5px;
+}
+.event-summary button {
+    margin: 10px;
+    width: 75px;
+    border-color: #FFFFFF;
+}
+
+.event-summary button:hover {
+	background-color: #3D5AFE;
+	color: white;
+}

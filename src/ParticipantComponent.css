@@ -1,0 +1,27 @@
+.participant-select > option {
+	font-size: 14px;
+	height: 25px;
+	padding-top: 5px;
+}
+
+.Select {
+	width: 215px;
+}
+
+input[type=checkbox]{
+	display: inline-block;
+	margin-top: 11px;
+}
+
+.unfilled {
+	border-style: solid;
+    border-color: red;
+}
+
+.checkboxLabel {
+	padding-left: 10px;
+}
+
+.hidden {
+	display: none;
+}
