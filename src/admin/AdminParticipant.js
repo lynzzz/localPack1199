@@ -63,13 +63,22 @@ class AdminParticipant extends Component {
 	componentWillMount() {
 		this.loadParticipants(this.props.components.eventId);
 	}
+	
+	getSelectedRow(){
+	    var keyArrays = this.refs.table.state.selectedRowKeys;
+		if ( keyArrays.length == 0){
+		    alert("Please select the participant that you want to edit");
+		}else{
+		
+		}
+	}
 
     createCustomButtonGroup = props => {
     return (
       <ButtonGroup className='my-custom-class' sizeClass='btn-group-md'>
-	  { props.exportCSVBtn }
-		 <button type='button' className= 'btn btn-warning'>
-         EditTable
+	     { props.exportCSVBtn }
+		 <button type='button' className= 'btn btn-warning' onClick={this.getSelectedRow.bind(this)}>
+             Edit Participant
          </button>
       </ButtonGroup>
     );
@@ -77,12 +86,13 @@ class AdminParticipant extends Component {
 
 	render() {
 	
-		const selectRowProp = {
-        mode: 'checkbox',
-        bgColor: 'pink'
+		var selectRowProp = {
+            mode: 'checkbox',
+		    clickToSelect: true,
+            bgColor: 'pink'
         };
 		
-		const options = {
+		var options = {
             btnGroup: this.createCustomButtonGroup
 		}
 	
@@ -92,7 +102,7 @@ class AdminParticipant extends Component {
 				<p>Number of participants: {this.state.totalNum}</p>
 				<div className="form-group">
 		    		<div className="col-md-12">
-				        <BootstrapTable data={this.state.participantsArray} selectRow = {selectRowProp} striped={true} hover={true} pagination exportCSV options={ options }>
+				        <BootstrapTable data={this.state.participantsArray} selectRow = {selectRowProp} striped={true} hover={true} pagination exportCSV options={ options } ref='table'>
 				          <TableHeaderColumn hidden={true} dataField="id" isKey={true} dataAlign="center" dataSort={true}>Id</TableHeaderColumn>
 					      <TableHeaderColumn width="200" dataField="name" dataAlign="center" dataSort={true}>Name</TableHeaderColumn>
 					      <TableHeaderColumn width="100" dataField="age" dataAlign="center" dataSort={true}>Age</TableHeaderColumn>
