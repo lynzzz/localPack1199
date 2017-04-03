@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './AdminParticipant.css';
-import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import { BootstrapTable, TableHeaderColumn, ButtonGroup } from 'react-bootstrap-table';
 import 'react-bootstrap-table/css/react-bootstrap-table.css';
 import 'react-bootstrap-table/css/toastr.css';
 import * as firebase from 'firebase';
+
+
 
 class AdminParticipant extends Component {
 
@@ -62,7 +64,27 @@ class AdminParticipant extends Component {
 		this.loadParticipants(this.props.components.eventId);
 	}
 
+    createCustomButtonGroup = props => {
+    return (
+      <ButtonGroup className='my-custom-class' sizeClass='btn-group-md'>
+	  { props.exportCSVBtn }
+		 <button type='button' className= 'btn btn-warning'>
+         EditTable
+         </button>
+      </ButtonGroup>
+    );
+   }
+
 	render() {
+	
+		const selectRowProp = {
+        mode: 'checkbox',
+        bgColor: 'pink'
+        };
+		
+		const options = {
+            btnGroup: this.createCustomButtonGroup
+		}
 	
 		return (
 			<div className="container" >
@@ -70,7 +92,7 @@ class AdminParticipant extends Component {
 				<p>Number of participants: {this.state.totalNum}</p>
 				<div className="form-group">
 		    		<div className="col-md-12">
-				        <BootstrapTable data={this.state.participantsArray} striped={true} hover={true} pagination exportCSV>
+				        <BootstrapTable data={this.state.participantsArray} selectRow = {selectRowProp} striped={true} hover={true} pagination exportCSV options={ options }>
 				          <TableHeaderColumn hidden={true} dataField="id" isKey={true} dataAlign="center" dataSort={true}>Id</TableHeaderColumn>
 					      <TableHeaderColumn width="200" dataField="name" dataAlign="center" dataSort={true}>Name</TableHeaderColumn>
 					      <TableHeaderColumn width="100" dataField="age" dataAlign="center" dataSort={true}>Age</TableHeaderColumn>
