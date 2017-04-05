@@ -4,6 +4,7 @@ import { BootstrapTable, TableHeaderColumn, ButtonGroup } from 'react-bootstrap-
 import 'react-bootstrap-table/css/react-bootstrap-table.css';
 import 'react-bootstrap-table/css/toastr.css';
 import * as firebase from 'firebase';
+import HealthFormModal from './AdminHealthFormModal'
 
 
 
@@ -25,7 +26,7 @@ class AdminParticipant extends Component {
 				healthForm: "",
 			}],
 		};
-		
+
 	}
 
 	json2array(json){
@@ -54,7 +55,7 @@ class AdminParticipant extends Component {
 				(snapshot)=>{
 					this.setState({
 							participantsArray: this.json2array(snapshot.val())
-					});					
+					});
 				}
 			);
 	}
@@ -63,47 +64,55 @@ class AdminParticipant extends Component {
 	componentWillMount() {
 		this.loadParticipants(this.props.components.eventId);
 	}
-	
+
 	getSelectedRow(){
 	    var keyArrays = this.refs.table.state.selectedRowKeys;
-		if ( keyArrays.length == 0){
+		if ( keyArrays.length === 0){
 		    alert("Please select the participant that you want to edit");
 		}else{
-		
+
 		}
 	}
 
+	/*
     createCustomButtonGroup = props => {
     return (
       <ButtonGroup className='my-custom-class' sizeClass='btn-group-md'>
 	     { props.exportCSVBtn }
-		 <button type='button' className= 'btn btn-warning' onClick={this.getSelectedRow.bind(this)}>
+		 <button type='button' className='btn btn-warning' onClick={this.getSelectedRow.bind(this)}>
              Edit Participant
          </button>
       </ButtonGroup>
     );
    }
-
+   */
+   
 	render() {
-	
+
 		var selectRowProp = {
             mode: 'checkbox',
 		    clickToSelect: true,
             bgColor: 'pink'
         };
-		
+
+		/*
 		var options = {
             btnGroup: this.createCustomButtonGroup
 		}
-	
+		*/
+		
+
 		return (
 			<div className="container" >
 				<h2><span className="label label-primary" >{this.state.eventTitle}</span></h2>
 				<p>Number of participants: {this.state.totalNum}</p>
+                <HealthFormModal
+				    
+				/>
 				<div className="form-group">
 		    		<div className="col-md-12">
-				        <BootstrapTable data={this.state.participantsArray} selectRow = {selectRowProp} striped={true} hover={true} pagination exportCSV options={ options } ref='table'>
-				          <TableHeaderColumn hidden={true} dataField="id" isKey={true} dataAlign="center" dataSort={true}>Id</TableHeaderColumn>
+				        <BootstrapTable data={this.state.participantsArray} selectRow={selectRowProp} striped={true} hover={true} pagination exportCSV ref='table'>  
+						  <TableHeaderColumn hidden={true} dataField="id" isKey={true} dataAlign="center" dataSort={true}>Id</TableHeaderColumn>
 					      <TableHeaderColumn width="200" dataField="name" dataAlign="center" dataSort={true}>Name</TableHeaderColumn>
 					      <TableHeaderColumn width="100" dataField="age" dataAlign="center" dataSort={true}>Age</TableHeaderColumn>
 					      <TableHeaderColumn width="100" dataField="den" dataAlign="center" dataSort={true}>Den</TableHeaderColumn>
@@ -118,4 +127,7 @@ class AdminParticipant extends Component {
 		);
 	};
 }
+
+
+
 export default AdminParticipant;
