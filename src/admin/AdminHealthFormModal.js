@@ -13,6 +13,10 @@ class HealthFormModal extends React.Component{
 
 
     openModal(){
+	    if (  this.props.numberOfSelectedRow == 0 ){
+		    alert("Please select at least one participant");
+			return;
+		}
 		this.setState({isModalOpen : true})
 	}
 
@@ -23,12 +27,14 @@ class HealthFormModal extends React.Component{
 
 	
 	
-    render(){
+    render(){	
+	
 		return(
 			<div>
                 <button className="btn btn-warning" onClick={()=>this.openModal()}>Edit Participant</button>
                 <ReactModal 
 				     isOpen={this.state.isModalOpen} 
+					 contentLabel="Health Form Modal"
                      style={{ overlay: {    
 	
 	position          : 'fixed',

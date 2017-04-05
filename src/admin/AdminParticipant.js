@@ -15,6 +15,7 @@ class AdminParticipant extends Component {
 
 		this.state = {
 			totalNum: 0,
+			totalSelectedNum : 0,
 			eventTitle: "Participants",
 			participantsArray: [{
 				id: "",
@@ -26,7 +27,8 @@ class AdminParticipant extends Component {
 				healthForm: "",
 			}],
 		};
-
+        this.onRowSelect = this.onRowSelect.bind(this);
+		this.onSelectAll = this.onSelectAll.bind(this);
 	}
 
 	json2array(json){
@@ -87,12 +89,30 @@ class AdminParticipant extends Component {
    }
    */
    
+   onRowSelect(row, isSelected, e) {
+		if ( isSelected){
+		    this.setState( {  totalSelectedNum : this.state.totalSelectedNum + 1 } )
+		}else{
+		    this.setState( {  totalSelectedNum : this.state.totalSelectedNum - 1 } )
+		}
+   } 
+
+   onSelectAll(isSelected, rows) {
+       	if ( isSelected){
+		    this.setState( {  totalSelectedNum :  this.state.totalNum } )
+		}else{
+		    this.setState( {  totalSelectedNum : 0 } )
+		}
+   }
+   
 	render() {
 
 		var selectRowProp = {
             mode: 'checkbox',
 		    clickToSelect: true,
-            bgColor: 'pink'
+            bgColor: 'pink',
+			onSelect: this.onRowSelect,
+			onSelectAll: this.onSelectAll
         };
 
 		/*
@@ -107,7 +127,7 @@ class AdminParticipant extends Component {
 				<h2><span className="label label-primary" >{this.state.eventTitle}</span></h2>
 				<p>Number of participants: {this.state.totalNum}</p>
                 <HealthFormModal
-				    
+				    numberOfSelectedRow= {this.state.totalSelectedNum}
 				/>
 				<div className="form-group">
 		    		<div className="col-md-12">
