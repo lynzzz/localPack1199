@@ -15,7 +15,7 @@ class AdminParticipant extends Component {
 
 		this.state = {
 			totalNum: 0,
-			totalSelectedNum : 0,
+			selectedNumArray : [],
 			eventTitle: "Participants",
 			participantsArray: [{
 				id: "",
@@ -91,9 +91,15 @@ class AdminParticipant extends Component {
    
    onRowSelect(row, isSelected, e) {
 		if ( isSelected){
-		    this.setState( {  totalSelectedNum : this.state.totalSelectedNum + 1 } )
+		    this.state.selectedNumArray.push(row.id)
+		    this.setState( {  selectedNumArray : this.state.selectedNumArray  } )
 		}else{
-		    this.setState( {  totalSelectedNum : this.state.totalSelectedNum - 1 } )
+		    for( var i=0; i<this.state.selectedNumArray.length; i++){
+			    if ( this.state.selectedNumArray[i] == row.id){
+				    this.state.selectedNumArray.splice(i, 1);
+				}
+			}
+		    this.setState( {  selectedNumArray : this.state.selectedNumArray  } )
 		}
    } 
 
@@ -127,7 +133,7 @@ class AdminParticipant extends Component {
 				<h2><span className="label label-primary" >{this.state.eventTitle}</span></h2>
 				<p>Number of participants: {this.state.totalNum}</p>
                 <HealthFormModal
-				    numberOfSelectedRow= {this.state.totalSelectedNum}
+				    selectedArray= {this.state.selectedNumArray}
 				/>
 				<div className="form-group">
 		    		<div className="col-md-12">

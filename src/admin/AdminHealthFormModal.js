@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal  from 'react-modal';
+import * as firebase from 'firebase';
 
 
 
@@ -13,7 +14,7 @@ class HealthFormModal extends React.Component{
 
 
     openModal(){
-	    if (  this.props.numberOfSelectedRow == 0 ){
+	    if (  this.props.selectedArray.length == 0 ){
 		    alert("Please select at least one participant");
 			return;
 		}
@@ -24,8 +25,18 @@ class HealthFormModal extends React.Component{
 		this.setState({isModalOpen : false})
 	}
 
-    save(){
+    /*save(){
+	    firebase.database().ref('/events/' + eventId + "/participants" + this.props.selectedArray[0]).set({
+		        name: "KKKKKKKKK",
+				age: 15,
+				den: "",
+				yurt: "",
+				paid: "",
+				healthForm: "",
+				}
+		)
 	}
+	*/
 
 
 
