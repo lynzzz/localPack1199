@@ -25,24 +25,37 @@ class HealthFormModal extends React.Component{
 		this.setState({isModalOpen : false})
 	}
 
-    /*save(){
-	    firebase.database().ref('/events/' + eventId + "/participants" + this.props.selectedArray[0]).set({
-		        name: "KKKKKKKKK",
-				age: 15,
-				den: "",
-				yurt: "",
-				paid: "",
-				healthForm: "",
-				}
-		)
+  save(){
+      var index = document.getElementById("healthFrom").selectedIndex;
+      var selectFrom = false;
+
+      if ( index == 0){
+          alert("Please select a value")
+          return;
+      }else if ( index == 1){
+          selectFrom = true;
+      }else{
+          selectFrom = false;
+      }
+
+      var time = new Date();
+      console.log(time);
+
+      for( var i=0; i<this.props.selectedArray.length; i++ ){
+          var ref =  firebase.database().ref('/events/' + this.props.eventid + "/participants/" +this.props.selectedArray[i] );
+          ref.update(
+            {
+              "healthForm" : selectFrom
+            }
+          )
+      }
+
+      this.closeModal();
 	}
-	*/
 
 
+  render(){
 
-
-    render(){
-	
 	const customStyles = {
   content : {
     top                   : '50%',
@@ -57,22 +70,20 @@ class HealthFormModal extends React.Component{
 
 		return(
 			<div>
-                <button className="btn btn-warning" onClick={()=>this.openModal()}>Edit Participant</button>
-                <Modal isOpen={this.state.isModalOpen} contentLabel="Health Form Modal" style = {customStyles}>
-               
-			        <div className="modal-header">
-					    Health Form option
+          <button className="btn btn-warning" onClick={()=>this.openModal()}>Edit Participant</button>
+          <Modal isOpen={this.state.isModalOpen} contentLabel="Health Form Modal" style = {customStyles}>
+
+			    <div className="modal-header">
+					    Health Form Selection
 					</div>
-			   
+
 					 <div className="modal-header">
-					 <div  className="dropdown">						
-                        <button className="btn btn-primary dropdown-toggle" data-toggle="dropdown">Health Form
-                        <span className="caret"></span></button>
-                        <ul className="dropdown-menu">
-                        <li><a href="#">Yes</a></li>
-                        <li><a href="#">No</a></li>
-                        </ul>
-                    </div>
+                   <label>Health Form:</label>
+                   <select id="healthFrom">
+                       <option value="N/A">--- Please select ---</option>
+                       <option value="Yes">Yes</option>
+                       <option value="No">No</option>
+                   </select>
 					</div>
 
 					<div className="modal-footer">

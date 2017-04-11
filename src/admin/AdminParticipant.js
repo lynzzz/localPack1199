@@ -88,7 +88,7 @@ class AdminParticipant extends Component {
     );
    }
    */
-   
+
    onRowSelect(row, isSelected, e) {
 		if ( isSelected){
 		    this.state.selectedNumArray.push(row.id)
@@ -101,16 +101,20 @@ class AdminParticipant extends Component {
 			}
 		    this.setState( {  selectedNumArray : this.state.selectedNumArray  } )
 		}
-   } 
+   }
 
    onSelectAll(isSelected, rows) {
-       	if ( isSelected){
-		    this.setState( {  totalSelectedNum :  this.state.totalNum } )
-		}else{
-		    this.setState( {  totalSelectedNum : 0 } )
-		}
+       if ( isSelected){
+			     for( var i=0; i<rows.length; i++){
+						   this.state.selectedNumArray.push(rows[i].id)
+						   this.setState( {  selectedNumArray : this.state.selectedNumArray  } )
+					 }
+			 }else{
+					 this.state.selectedNumArray.splice(0, this.state.selectedNumArray.length);
+			 }
+			 console.log("selectedNumArray", this.state.selectedNumArray)
    }
-   
+
 	render() {
 
 		var selectRowProp = {
@@ -126,18 +130,18 @@ class AdminParticipant extends Component {
             btnGroup: this.createCustomButtonGroup
 		}
 		*/
-		
+
 
 		return (
 			<div className="container" >
 				<h2><span className="label label-primary" >{this.state.eventTitle}</span></h2>
 				<p>Number of participants: {this.state.totalNum}</p>
                 <HealthFormModal
-				    selectedArray= {this.state.selectedNumArray}
+				    selectedArray = {this.state.selectedNumArray} eventid = {this.props.components.eventId}
 				/>
 				<div className="form-group">
 		    		<div className="col-md-12">
-				        <BootstrapTable data={this.state.participantsArray} selectRow={selectRowProp} striped={true} hover={true} pagination exportCSV ref='table'>  
+				        <BootstrapTable data={this.state.participantsArray} selectRow={selectRowProp} striped={true} hover={true} pagination exportCSV ref='table'>
 						  <TableHeaderColumn hidden={true} dataField="id" isKey={true} dataAlign="center" dataSort={true}>Id</TableHeaderColumn>
 					      <TableHeaderColumn width="200" dataField="name" dataAlign="center" dataSort={true}>Name</TableHeaderColumn>
 					      <TableHeaderColumn width="100" dataField="age" dataAlign="center" dataSort={true}>Age</TableHeaderColumn>
