@@ -67,6 +67,28 @@ class AdminHealthFormModal extends React.Component{
             }
           )
       }
+
+      // Update UI
+      var Selected = selectFrom === true ? "Yes" : "No"
+
+      var this_parent = this.props.parentPointer
+      var copyParticipantArr = this.props.parentPointer.state.participantsArray
+      for( var j=0; j<this_parent.state.participantsArray.length; j++){
+          for( var k=0; k<this.props.selectedArray.length; k++ ){
+               if ( this.props.selectedArray[k] === this_parent.state.participantsArray[j].id){
+                copyParticipantArr[j].healthForm = Selected
+
+
+               }
+          }
+
+      }
+
+      // setState will trigger rerender
+      this_parent.setState({
+          participantsArray : copyParticipantArr
+      })
+
       this.closeModal();
 	}
 

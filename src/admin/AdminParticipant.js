@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './AdminParticipant.css';
-import { BootstrapTable, TableHeaderColumn, ButtonGroup } from 'react-bootstrap-table';
+import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import 'react-bootstrap-table/css/react-bootstrap-table.css';
 import 'react-bootstrap-table/css/toastr.css';
 import * as firebase from 'firebase';
@@ -83,7 +83,7 @@ class AdminParticipant extends Component {
 		    this.setState( {  selectedNumArray : this.state.selectedNumArray  } )
 		}else{
 		    for( var i=0; i<this.state.selectedNumArray.length; i++){
-			    if ( this.state.selectedNumArray[i] == row.id){
+			    if ( this.state.selectedNumArray[i] === row.id){
 				    this.state.selectedNumArray.splice(i, 1);
 				}
 			}
@@ -100,7 +100,6 @@ class AdminParticipant extends Component {
 			 }else{
 					 this.state.selectedNumArray.splice(0, this.state.selectedNumArray.length);
 			 }
-			 console.log("selectedNumArray", this.state.selectedNumArray)
    }
 
 	render() {
@@ -119,7 +118,7 @@ class AdminParticipant extends Component {
 				<h2><span className="label label-primary" >{this.state.eventTitle}</span></h2>
 				<p>Number of participants: {this.state.totalNum}</p>
                 <AdminHealthFormModal
-				    selectedArray = {this.state.selectedNumArray} eventid = {this.props.components.eventId} currentAdminName={this.props.components.user}
+				    selectedArray={this.state.selectedNumArray} eventid={this.props.components.eventId} currentAdminName={this.props.components.user} parentPointer={this}
 				/>
 				<div className="form-group">
 		    		<div className="col-md-12">
