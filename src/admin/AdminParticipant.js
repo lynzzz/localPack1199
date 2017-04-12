@@ -4,7 +4,7 @@ import { BootstrapTable, TableHeaderColumn, ButtonGroup } from 'react-bootstrap-
 import 'react-bootstrap-table/css/react-bootstrap-table.css';
 import 'react-bootstrap-table/css/toastr.css';
 import * as firebase from 'firebase';
-import HealthFormModal from './AdminHealthFormModal'
+import AdminHealthFormModal from './AdminHealthFormModal'
 
 
 
@@ -136,8 +136,8 @@ class AdminParticipant extends Component {
 			<div className="container" >
 				<h2><span className="label label-primary" >{this.state.eventTitle}</span></h2>
 				<p>Number of participants: {this.state.totalNum}</p>
-                <HealthFormModal
-				    selectedArray = {this.state.selectedNumArray} eventid = {this.props.components.eventId}
+                <AdminHealthFormModal
+				    selectedArray = {this.state.selectedNumArray} eventid = {this.props.components.eventId} currentAdminName={this.props.components.user}
 				/>
 				<div className="form-group">
 		    		<div className="col-md-12">

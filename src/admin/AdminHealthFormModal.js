@@ -4,17 +4,19 @@ import * as firebase from 'firebase';
 
 
 
-class HealthFormModal extends React.Component{
+class AdminHealthFormModal extends React.Component{
     constructor(props){
-		super(props)
-		this.state = {
-			isModalOpen : false
-		}
-	}
+		    super(props)
+		    this.state = {
+			      isModalOpen : false,
+            currentAdminName : ""
+		    }
+    }
+
 
 
     openModal(){
-	    if (  this.props.selectedArray.length == 0 ){
+	    if (  this.props.selectedArray.length === 0 ){
 		    alert("Please select at least one participant");
 			return;
 		}
@@ -26,30 +28,54 @@ class HealthFormModal extends React.Component{
 	}
 
   save(){
+      // Get dropdown selection
       var index = document.getElementById("healthFrom").selectedIndex;
       var selectFrom = false;
 
-      if ( index == 0){
+      if ( index === 0){
           alert("Please select a value")
           return;
-      }else if ( index == 1){
+      }else if ( index === 1){
           selectFrom = true;
       }else{
           selectFrom = false;
       }
 
-      var time = new Date();
-      console.log(time);
+      // Get current user
+      var modifiedBy = this.props.currentAdminName.firstName + " " + this.props.currentAdminName.lastName
 
+
+      // Get current time
+      var d = new Date();
+      var year = d.getFullYear()
+      var month = d.getMonth() + 1
+      var date = d.getDate()
+      var hour = d.getUTCHours()
+      var minute = d.getUTCMinutes()
+      var second = d.getUTCSeconds()
+      var modifiedAt = year + '-' + month + '-' + date + 'T' + hour + ':' + minute + ':' + second + 'Z'
+
+
+
+      // update healform field in database based on user selection
       for( var i=0; i<this.props.selectedArray.length; i++ ){
           var ref =  firebase.database().ref('/events/' + this.props.eventid + "/participants/" +this.props.selectedArray[i] );
           ref.update(
             {
-              "healthForm" : selectFrom
+              "healthForm" : selectFrom,
+              "modified by": modifiedBy,
+              "modified at": modifiedAt
             }
           )
       }
 
+      for(  let j=0; j<this.props.selectedArray.length; j++ ){
+        let testRef =  firebase.database().ref('/events/' + this.props.eventid + "/participants/" + this.props.selectedArray[j] )
+        testRef.on("value", function(snapshot) {
+                        console.log("aftermodification", snapshot.val())
+                      }
+        )
+      }
       this.closeModal();
 	}
 
@@ -71,7 +97,7 @@ class HealthFormModal extends React.Component{
 		return(
 			<div>
           <button className="btn btn-warning" onClick={()=>this.openModal()}>Edit Participant</button>
-          <Modal isOpen={this.state.isModalOpen} contentLabel="Health Form Modal" style = {customStyles}>
+          <Modal isOpen={this.state.isModalOpen} contentLabel="Health Form Modal" style={customStyles}>
 
 			    <div className="modal-header">
 					    Health Form Selection
@@ -97,4 +123,4 @@ class HealthFormModal extends React.Component{
 
 }
 
-export default HealthFormModal;
+export default AdminHealthFormModal;

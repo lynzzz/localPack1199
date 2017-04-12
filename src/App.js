@@ -23,7 +23,7 @@ import config from './Config';
 import Menu from './Menu';
 import * as firebase from 'firebase';
 
-const history = createHistory(); 
+const history = createHistory();
 
 class App extends React.Component {
 
@@ -33,11 +33,11 @@ class App extends React.Component {
 			page: null,
 			activeModule: "home",
 			user: null,
-			eventUri: "2017_spring_family_overnight",			
-		}; 
-		
+			eventUri: "2017_spring_family_overnight",
+		};
+
 	}
-	
+
 
 	getUserInfo = (userId)=>{
 		firebase.database().ref('/users/' + userId).once('value').then((snapshot)=> {
@@ -50,9 +50,9 @@ class App extends React.Component {
 				email: snapshot.val().email,
 				phone: snapshot.val().phone,
 				id: userId,
-				admin: snapshot.val().admin,				
+				admin: snapshot.val().admin,
 			}
-			this.setState(tempObj);			
+			this.setState(tempObj);
 
 			// console.log("user info is", tempObj.user);
 			// console.log(history.location.pathname);
@@ -63,14 +63,14 @@ class App extends React.Component {
 	signInFirebase = (email, password, url) => {
 		firebase.auth().signInWithEmailAndPassword(email, password)
 			.then(() => {
-				let userId = firebase.auth().currentUser.uid;		
-				this.getUserInfo(userId);	
+				let userId = firebase.auth().currentUser.uid;
+				this.getUserInfo(userId);
 
-				// console.log("Signed in.");	
-				if (url==="/login") 
+				// console.log("Signed in.");
+				if (url==="/login")
 					url = "/";
 				this.transitionUrl(url);
-			}, (error)=> {		  
+			}, (error)=> {
 				var errorCode = error.code;
 				var errorMessage = error.message;
 				if (errorCode === 'auth/wrong-password') {
@@ -125,7 +125,7 @@ class App extends React.Component {
 			// 			id: user.uid
 			// 		}})
 			// 	}
-			// });			
+			// });
 			return true;
 		}
 		else {
@@ -145,7 +145,7 @@ class App extends React.Component {
 
 
 	router = (location) => {
-		let page = null;		
+		let page = null;
 		let activeModule = null;
 		let tempObj = Object.assign({}, this.state);
 		let components = null;
@@ -159,7 +159,7 @@ class App extends React.Component {
 				};
 				page = <EventList components={components}/>;
 				activeModule = "home";
-				break;							
+				break;
 			case "/logout":
 				page = <Logout onSignOut={this.signOutFirebase} appModule={this} />;
 				activeModule = "logout";
@@ -192,7 +192,7 @@ class App extends React.Component {
 
 				page = <Login components={components} />;
 				activeModule ="login";
-				break;	
+				break;
 			case "/signup":
 				components = {
 					onSignUp: this.signUpFirebase
@@ -212,19 +212,19 @@ class App extends React.Component {
 
 		if (this.state.user!=null) {
 			// eslint-disable-next-line
-			switch (location.pathname) {				
+			switch (location.pathname) {
 				case "/" + this.state.eventUri + "/participant":
 					components = {
 						transition: this.transition,
 						transitionUrl: this.transitionUrl,
-						user: this.state.user,		
-						eventUri: this.state.eventUri,	
-						getUserInfo: this.getUserInfo,	
+						user: this.state.user,
+						eventUri: this.state.eventUri,
+						getUserInfo: this.getUserInfo,
 					};
 					page = <Participant components={components}/>;
 					activeModule = "participant";
 					break;
-				case "/" + this.state.eventUri + "/pay":					
+				case "/" + this.state.eventUri + "/pay":
 					components = {
 						transition: this.transition,
 						transitionUrl: this.transitionUrl,
@@ -254,13 +254,13 @@ class App extends React.Component {
 					};
 					page = <Comments components={components}/>;
 					activeModule = "comments";
-					break;			
+					break;
 			}
 		}
 
 		if ((this.state.user!=null)&&(this.state.user.admin!=null)) {
 			// eslint-disable-next-line
-			switch (location.pathname) {	
+			switch (location.pathname) {
 				case "/admin":
 					components = {
 						userId: this.state.user.id,
@@ -269,10 +269,11 @@ class App extends React.Component {
 					};
 					page = <AdminHome components={components} />
 					activeModule = "adminHome";
-					break;	
+					break;
 				case "/admin/" + this.state.eventUri + "/participant":
 					components = {
 						eventId: "E_1",
+						user: this.state.user,
 					};
 					page = <AdminParticipant components={components} />;
 					activeModule = "adminParticipant";
@@ -297,7 +298,7 @@ class App extends React.Component {
 					break;
 			}
 		}
-		
+
 		tempObj.page = page;
 		tempObj.activeModule = activeModule;
 		this.setState(tempObj);
@@ -306,7 +307,7 @@ class App extends React.Component {
 
 	transition = event => {
 		event.preventDefault();
-		history.push({			
+		history.push({
 			pathname: event.currentTarget.pathname,
 			search: event.currentTarget.search
 		});
@@ -319,16 +320,16 @@ class App extends React.Component {
 	};
 
 
-	componentWillMount() {		
+	componentWillMount() {
 		var p = new Promise((resolve,reject) => resolve());
 		p.then(firebase.initializeApp(config))
 			.then(()=>console.log("Firebase initialized"))
 			.catch(err=>console.log(err));
 
-		firebase.auth().onAuthStateChanged((user)=> {			
-	      if (user!=null) {      	      	
-	      	this.getUserInfo(user.uid);	
-	      } 
+		firebase.auth().onAuthStateChanged((user)=> {
+	      if (user!=null) {
+	      	this.getUserInfo(user.uid);
+	      }
 	      else {
 	      	console.log("not signed in");
 	      	// this.signInFirebase("react@example.com", "react@example.com");
@@ -338,7 +339,7 @@ class App extends React.Component {
 	    this.router(history.location);
 		history.listen((location, action) => {
 			// console.log(`The current URL is ${location.pathname}${location.search}${location.hash}`);
-			// console.log(`The last navigation action was ${action}`);      
+			// console.log(`The last navigation action was ${action}`);
 			this.router(location);
 		});
 	}
@@ -362,13 +363,13 @@ class App extends React.Component {
 					<div >
 						<div className="nav-side-menu">
 							<div className="brand">Mountainside Cub Scout</div>
-							<i className="glyphicon glyphicon-menu-hamburger toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>				  
-							<Menu components={components}/>		
+							<i className="glyphicon glyphicon-menu-hamburger toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+							<Menu components={components}/>
 						</div>
 					</div>
 					<div >
 						<div className="main" >
-							<div>{this.state.page}</div>		
+							<div>{this.state.page}</div>
 						</div>
 					</div>
 				</div>
@@ -380,4 +381,3 @@ class App extends React.Component {
 
 
 export default App;
-
