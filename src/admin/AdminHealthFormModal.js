@@ -9,7 +9,6 @@ class AdminHealthFormModal extends React.Component{
 		    super(props)
 		    this.state = {
 			      isModalOpen : false,
-            currentAdminName : ""
 		    }
     }
 
@@ -57,7 +56,7 @@ class AdminHealthFormModal extends React.Component{
 
 
 
-      // update healform field in database based on user selection
+      // Update database
       for( var i=0; i<this.props.selectedArray.length; i++ ){
           var ref =  firebase.database().ref('/events/' + this.props.eventid + "/participants/" +this.props.selectedArray[i] );
           ref.update(
@@ -67,14 +66,6 @@ class AdminHealthFormModal extends React.Component{
               "modified at": modifiedAt
             }
           )
-      }
-
-      for(  let j=0; j<this.props.selectedArray.length; j++ ){
-        let testRef =  firebase.database().ref('/events/' + this.props.eventid + "/participants/" + this.props.selectedArray[j] )
-        testRef.on("value", function(snapshot) {
-                        console.log("aftermodification", snapshot.val())
-                      }
-        )
       }
       this.closeModal();
 	}

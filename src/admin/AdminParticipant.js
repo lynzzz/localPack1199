@@ -76,18 +76,6 @@ class AdminParticipant extends Component {
 		}
 	}
 
-	/*
-    createCustomButtonGroup = props => {
-    return (
-      <ButtonGroup className='my-custom-class' sizeClass='btn-group-md'>
-	     { props.exportCSVBtn }
-		 <button type='button' className='btn btn-warning' onClick={this.getSelectedRow.bind(this)}>
-             Edit Participant
-         </button>
-      </ButtonGroup>
-    );
-   }
-   */
 
    onRowSelect(row, isSelected, e) {
 		if ( isSelected){
@@ -124,12 +112,6 @@ class AdminParticipant extends Component {
 			onSelect: this.onRowSelect,
 			onSelectAll: this.onSelectAll
         };
-
-		/*
-		var options = {
-            btnGroup: this.createCustomButtonGroup
-		}
-		*/
 
 
 		return (
